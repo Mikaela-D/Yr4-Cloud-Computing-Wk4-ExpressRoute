@@ -27,5 +27,18 @@ router.get("/products/:theId", (req, res, next) => {
   res.redirect("/");
 });
 
+router.get("/showProducts", (req, res, next) => {
+  let theResponseHtml = "<h1>The products are listed below</h1>";
+  for (let ii = 0; ii < products.length; ii++) {
+    theResponseHtml +=
+      "<p>Title: " +
+      products[ii].title +
+      ", Price: " +
+      products[ii].price +
+      "<p/>";
+  }
+  res.send(theResponseHtml);
+});
+
 exports.routes = router;
 exports.products = products;
